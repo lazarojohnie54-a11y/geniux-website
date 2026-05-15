@@ -391,6 +391,55 @@ body {
   box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4);
 }
 
+/* ===== DOWNLOADS SECTION ===== */
+.downloads-section {
+  padding: 100px 5%;
+  background: var(--darker);
+}
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 26, 62, 0.5);
+  border: 1px solid rgba(230, 126, 34, 0.2);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.download-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 126, 34, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.download-icon {
+  font-size: 40px;
+}
+
+.download-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.download-desc {
+  font-size: 12px;
+  color: var(--gray);
+  text-align: center;
+}
+
 /* ===== ABOUT SECTION ===== */
 .about {
   padding: 100px 5%;
@@ -934,6 +983,36 @@ body {
     <a href="geniux_showcase.mp4" download class="video-download">
       ⬇️ Download Video
     </a>
+  </div>
+</section>
+
+<!-- DOWNLOADS SECTION -->
+<section class="downloads-section" id="downloads">
+  <div class="video-container">
+    <h2><span class="gradient-text">Pakua</span> Nyaraka</h2>
+    <p>PDFs za kumbukumbu, CV, na cover letters</p>
+    <div class="downloads-grid">
+      <a href="GENIUX_Historia.pdf" download class="download-card">
+        <span class="download-icon">📄</span>
+        <span class="download-title">Historia ya GENIUX</span>
+        <span class="download-desc">PDF - Historia kamili ya kampuni</span>
+      </a>
+      <a href="Lazaro_John_CV.pdf" download class="download-card">
+        <span class="download-icon">📋</span>
+        <span class="download-title">CV ya Lazaro John</span>
+        <span class="download-desc">PDF - Professional CV</span>
+      </a>
+      <a href="Cover_Letter_Upwork.pdf" download class="download-card">
+        <span class="download-icon">✉️</span>
+        <span class="download-title">Cover Letter - Upwork</span>
+        <span class="download-desc">PDF - AI Specialist application</span>
+      </a>
+      <a href="Cover_Letter_Freelancer.pdf" download class="download-card">
+        <span class="download-icon">✉️</span>
+        <span class="download-title">Cover Letter - Freelancer</span>
+        <span class="download-desc">PDF - Web Developer application</span>
+      </a>
+    </div>
   </div>
 </section>
 
