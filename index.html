@@ -751,14 +751,20 @@ body {
   color: white;
   text-decoration: none;
   box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
-  z-index: 999;
+  z-index: 9999 !important;
   transition: all 0.3s;
   animation: whatsappPulse 2s ease-in-out infinite;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float:active {
+  transform: scale(0.95);
 }
 
 @keyframes whatsappPulse {
@@ -1076,7 +1082,7 @@ body {
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/255657323904" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/255657323904?text=Habari%20GENIUX%2C%20ninahitaji%20msaaada" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
   💬
 </a>
 
