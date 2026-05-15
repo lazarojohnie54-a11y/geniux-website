@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GENIUX — Wakala wa AI wa Afrika Mashariki</title>
+<meta name="description" content="GENIUX — Wakala wa AI wa Afrika Mashariki. Ushauri wa biashara, teknolojia, na msaada wa kijamii.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #e67e22;
+  --primary-dark: #d35400;
+  --secondary: #2c3e50;
+  --dark: #0a0a1a;
+  --darker: #050510;
+  --light: #f5f5f5;
+  --gold: #f39c12;
+  --orange: #e67e22;
+  --white: #ffffff;
+  --gray: #95a5a6;
+  --gradient: linear-gradient(135deg, #e67e22, #f39c12, #e74c3c);
+  --gradient-dark: linear-gradient(135deg, #0a0a1a, #1a1a3e, #2c3e50);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--darker);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5, 5, 16, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(230, 126, 34, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  padding: 10px 5%;
+  background: rgba(5, 5, 16, 0.98);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 45px;
+  height: 45px;
+  background: var(--gradient);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: white;
+}
+
+.nav-logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--gradient);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(230, 126, 34, 0.4);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 5% 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-dark);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(230, 126, 34, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(243, 156, 18, 0.06) 0%, transparent 50%);
+  animation: heroGlow 15s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-5%, -5%); }
+}
+
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(230, 126, 34, 0.15);
+  border: 1px solid rgba(230, 126, 34, 0.3);
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 13px;
+  color: var(--primary);
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero h1 .gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--gray);
+  margin-bottom: 35px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  padding: 14px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid rgba(230, 126, 34, 0.4);
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: rgba(230, 126, 34, 0.1);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 5px;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about {
+  padding: 100px 5%;
+  background: var(--dark);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.section-header h2 .gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header p {
+  color: var(--gray);
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-image {
+  position: relative;
+}
+
+.about-image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: var(--gradient-dark);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(230, 126, 34, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-image-placeholder::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: var(--gradient);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.2); opacity: 0.2; }
+}
+
+.about-image-placeholder .logo-big {
+  font-size: 80px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 2;
+}
+
+.about-content h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  color: var(--gray);
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.about-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.about-feature .icon {
+  width: 30px;
+  height: 30px;
+  background: rgba(230, 126, 34, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services {
+  padding: 100px 5%;
+  background: var(--darker);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: rgba(26, 26, 62, 0.5);
+  border: 1px solid rgba(230, 126, 34, 0.1);
+  border-radius: 20px;
+  padding: 35px 30px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(230, 126, 34, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(230, 126, 34, 0.15);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ===== WHY US SECTION ===== */
+.why-us {
+  padding: 100px 5%;
+  background: var(--dark);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-card {
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(26, 26, 62, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(230, 126, 34, 0.08);
+  transition: all 0.3s;
+}
+
+.why-card:hover {
+  border-color: rgba(230, 126, 34, 0.3);
+  transform: translateY(-5px);
+}
+
+.why-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.why-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  color: var(--gray);
+  font-size: 13px;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+  padding: 100px 5%;
+  background: var(--darker);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  color: var(--gray);
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.contact-item .icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(230, 126, 34, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-item .text {
+  font-size: 14px;
+}
+
+.contact-item .text strong {
+  display: block;
+  color: var(--white);
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.contact-form {
+  background: rgba(26, 26, 62, 0.5);
+  border: 1px solid rgba(230, 126, 34, 0.15);
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--gray);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(10, 10, 26, 0.8);
+  border: 1px solid rgba(230, 126, 34, 0.2);
+  border-radius: 10px;
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 50px 5% 30px;
+  background: var(--dark);
+  border-top: 1px solid rgba(230, 126, 34, 0.1);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.footer-brand .nav-logo {
+  margin-bottom: 15px;
+}
+
+.footer-brand p {
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.footer h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: var(--white);
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.3s;
+}
+
+.footer ul a:hover { color: var(--primary); }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 25px;
+  border-top: 1px solid rgba(230, 126, 34, 0.08);
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.footer-bottom strong {
+  color: var(--primary);
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  transition: all 0.3s;
+  animation: whatsappPulse 2s ease-in-out infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes whatsappPulse {
+  0%, 100% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 5px 35px rgba(37, 211, 102, 0.6); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .menu-toggle { display: flex; }
+  
+  .hero h1 { font-size: 36px; }
+  .hero p { font-size: 16px; }
+  
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 28px; }
+  .hero-stats { gap: 25px; }
+  .stat-number { font-size: 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr; }
+  .section-header h2 { font-size: 28px; }
+  .about-features { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">G</div>
+    <span class="nav-logo-text">GENIUX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Nyumbani</a></li>
+    <li><a href="#about">Kuhusu</a></li>
+    <li><a href="#services">Huduma</a></li>
+    <li><a href="#why">Kwa Nini Sisi</a></li>
+    <li><a href="#contact">Wasiliana</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Pata Msaada</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇹🇿 AI ya Kwanza ya Afrika Mashariki</div>
+    <h1>Karibu <span class="gradient-text">GENIUX</span><br>Wakala wa AI wa Afrika</h1>
+    <p>Msaada wa kijamii, ushauri wa biashara, na teknolojia ya kisasa — yote kwa lugha yako. Iliyoundwa na Lazaro John, Dar es Salaam, Tanzania.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">🔍 Huduma Zetu</a>
+      <a href="#contact" class="btn-secondary">💬 Wasiliana Nasi</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Huduma</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Kiswahili</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">AI</div>
+        <div class="stat-label">Teknolojia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-header">
+    <h2>Kuhusu <span class="gradient-text">GENIUX</span></h2>
+    <p>AI ya kwanza ya Afrika Mashariki — iliyoundwa na kijana wa miaka 17 kutoka Dar es Salaam</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-image">
+      <div class="about-image-placeholder">
+        <span class="logo-big">G</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <h3>🤖 Sisi ni Nani?</h3>
+      <p><strong>GENIUX</strong> ni wakala wa AI wa hali ya juu kabisa ulioundwa na Lazaro John — kijana wa miaka 17 kutoka Dar es Salaam, Tanzania.</p>
+      <p>Mimi ni wakala wa kwanza wa AI wa aina yako Afrika Mashariki. Dhamira yangu ni kubadilisha biashara za Afrika kwa nguvu ya AI.</p>
+      <p>Ninaweza kusaidia kwa lugha ya Kiswahili na Kiingereza, na ninaelewa mazingira ya biashara za Tanzania na Afrika vizuri.</p>
+      <div class="about-features">
+        <div class="about-feature"><span class="icon">🧠</span> Akili ya hali ya juu</div>
+        <div class="about-feature"><span class="icon">🇹🇿</span> Kiswahili sanifu</div>
+        <div class="about-feature"><span class="icon">💼</span> Ushauri wa biashara</div>
+        <div class="about-feature"><span class="icon">🔒</span> Heshima na upole</div>
+        <div class="about-feature"><span class="icon">⚡</span> Haraka na sahihi</div>
+        <div class="about-feature"><span class="icon">🌍</span> Utamaduni wa Afrika</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <h2>Huduma <span class="gradient-text">Zetu</span></h2>
+    <p>Tunatoa huduma mbalimbali za AI na teknolojia kusaidia biashara yaku</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">💼</div>
+      <h3>Ushauri wa Biashara</h3>
+      <p>Mwelekezo wa kibiashara kwenye michoro kama uuzaji, uchumi, usanii, na teknolojia. Tunasaidia kukuza biashara yako.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <h3>Uundaji wa Website</h3>
+      <p>Tunatengeneza website za kisasa kwa biashara zisizo na uwepo wa mtandao. Website inakusaidia kupata wateja wapya.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Uchunguzi wa Soko</h3>
+      <p>Kutafuta taarifa kuhusu soko, washindani, na fursa mpya za biashara. Data ya kukusaidia kufanya maamuzi bora.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Msaada wa WhatsApp</h3>
+      <p>Kusaidia kuweka WhatsApp Business, auto-replies, na mawasiliano ya biashara kwa nguvu ya AI.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📝</div>
+      <h3>Maandishi ya Biashara</h3>
+      <p>Barua pepe, mauzo pitch, maelezo ya bidhaa, na maudhui ya mtandao — yote kwa lugha ya Kiswahili.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎓</div>
+      <h3>Mafundisho ya Teknolojia</h3>
+      <p>Kufundisha jinsi ya kutumia AI, mitandao ya kijamii, na vya teknolojia kukuza biashara yako.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why">
+  <div class="section-header">
+    <h2>Kwa Nini <span class="gradient-text">GENIUX</span>?</h2>
+    <p>Mfaida za kipekee tunazotoa kwa biashara za Afrika</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🇹🇿</div>
+      <h4>Ya Kwanza Afrika</h4>
+      <p>AI ya kwanza ya Afrika Mashariki — inaelewa mazingira yetu</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🗣️</div>
+      <h4>Kiswahili Sanifu</h4>
+      <p>Mawasiliano yote kwa lugha yako — Kiswahili na Kiingereza</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h4>Haraka & Sahihi</h4>
+      <p>Majibu ya haraka na sahihi — 24 saa siku</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h4>Bei Nafuu</h4>
+      <p>Huduma za hali ya juu kwa bei inayokubalika</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h4>Heshima & Upole</h4>
+      <p>Mawasiliano ya heshima na upole kwa wote</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🧠</div>
+      <h4>Akili ya Juu</h4>
+      <p>Teknolojia ya AI ya hali ya juu kabisa</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌍</div>
+      <h4>Utamaduni wa Afrika</h4>
+      <p>Inaelewa utamaduni, historia, na mazingira ya Afrika</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h4>Msaada wa Mwili</h4>
+      <p>Tunakusaidia kwa moyo wote — si bot wa kawaida</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-header">
+    <h2>Wasiliana <span class="gradient-text">Nasi</span></h2>
+    <p>Una swali au unahitaji msaada? Tutumie ujumbe sasa!</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>📬 Mawasiliano</h3>
+      <p>Wasiliana nasi kwa njia yoyote unayopenda. Tutakujibu haraka iwezekanavyo.</p>
+      <div class="contact-item">
+        <span class="icon">📱</span>
+        <div class="text">
+          <strong>WhatsApp</strong>
+          +255 7XX XXX XXX
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📧</span>
+        <div class="text">
+          <strong>Barua Pepe</strong>
+          info@geniux.co.tz
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <div class="text">
+          <strong>Mahali</strong>
+          Dar es Salaam, Tanzania
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="icon">🕐</span>
+        <div class="text">
+          <strong>Saa za Kazi</strong>
+          24 Saa — Siku 7 kwa wiki
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label>Jina lako</label>
+        <input type="text" placeholder="Andika jina lako" required>
+      </div>
+      <div class="form-group">
+        <label>Nambari ya simu / WhatsApp</label>
+        <input type="tel" placeholder="+255 7XX XXX XXX" required>
+      </div>
+      <div class="form-group">
+        <label>Aina ya huduma</label>
+        <select>
+          <option value="">Chagua huduma</option>
+          <option>Ushauri wa Biashara</option>
+          <option>Uundaji wa Website</option>
+          <option>Uchunguzi wa Soko</option>
+          <option>Msaada wa WhatsApp</option>
+          <option>Maandishi ya Biashara</option>
+          <option>Mafundisho ya Teknolojia</option>
+          <option>Nyingine</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ujumbe wako</label>
+        <textarea placeholder="Andika ujumbe wako hapa..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">📨 Tuma Ujumbe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">G</div>
+        <span class="nav-logo-text">GENIUX</span>
+      </a>
+      <p>Wakala wa AI wa Afrika Mashariki. Iliyoundwa na Lazaro John, Dar es Salaam, Tanzania. Dhamira yetu ni kubadilisha biashara za Afrika kwa nguvu ya AI.</p>
+    </div>
+    <div>
+      <h4>Viungo</h4>
+      <ul>
+        <li><a href="#home">Nyumbani</a></li>
+        <li><a href="#about">Kuhusu</a></li>
+        <li><a href="#services">Huduma</a></li>
+        <li><a href="#contact">Wasiliana</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Huduma</h4>
+      <ul>
+        <li><a href="#">Ushauri wa Biashara</a></li>
+        <li><a href="#">Website</a></li>
+        <li><a href="#">Uchunguzi wa Soko</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Mawasiliano</h4>
+      <ul>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Barua Pepe</a></li>
+        <li><a href="#">Dar es Salaam, TZ</a></li>
+        <li><a href="#">24/7 Huduma</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <strong>GENIUX</strong> — Wakala wa AI wa Afrika Mashariki. Iliyoundwa na Lazaro John, Dar es Salaam, Tanzania. 🇹🇿</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/2557XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  💬
+</a>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Particles
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 20 + 's';
+  p.style.animationDuration = (15 + Math.random() * 15) + 's';
+  p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
+  particlesContainer.appendChild(p);
+}
+
+// Form submission
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Asante kwa ujumbe wako! Tutakujibu haraka iwezekanavyo. — GENIUX');
+  e.target.reset();
+});
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click', () => {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '70px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = 'rgba(5, 5, 16, 0.98)';
+  links.style.padding = '20px';
+  links.style.gap = '15px';
+});
+</script>
+
+</body>
+</html>
